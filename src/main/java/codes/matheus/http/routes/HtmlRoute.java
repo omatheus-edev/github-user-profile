@@ -13,9 +13,14 @@ import java.io.InputStream;
 public final class HtmlRoute implements HttpHandler {
     @Override
     public void handle(@NotNull HttpExchange exchange) throws IOException {
-        @Nullable InputStream html = getClass().getResourceAsStream("/frontend/index.html");
+        @NotNull String path = exchange.getRequestURI().getPath();
+        if (path.equals("/")) {
+            path = "index.html";
+        }
 
-        if (html == null) {
+        @Nullable InputStream file = getClass().getResourceAsStream("/frontend/" + path);
+
+        if (file == null) {
             Response.builder(exchange)
                     .status(HttpStatus.NOT_FOUND)
                     .header("Content-Type", "text/plain")
@@ -24,14 +29,23 @@ public final class HtmlRoute implements HttpHandler {
             return;
         }
 
-        byte[] bytes = html.readAllBytes();
+        byte[] bytes = file.readAllBytes();
+        file.close();
         Response.builder(exchange)
-                .header("Content-Type", "text/html; chatset=UTF-8")
+                .header("Content-Type", getMimeType(path))
                 .body(new String(bytes))
                 .send();
-        html.close();
     }
 
+    private @NotNull String getMimeType(@NotNull String path) {
+        if (path.endsWith(".html")) return "text/html; charset=UTF-8";
+        if (path.endsWith(".css"))  return "text/css; charset=UTF-8";
+        if (path.endsWith(".js"))   return "application/javascript; charset=UTF-8";
+        if (path.endsWith(".png"))  return "image/png";
+        if (path.endsWith(".ico"))  return "image/x-icon";
+        if (path.endsWith(".svg"))  return "image/svg+xml";
+        return "text/plain";
+    }
 
 }
 
