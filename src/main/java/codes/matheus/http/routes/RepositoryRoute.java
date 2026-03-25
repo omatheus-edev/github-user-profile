@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 public final class RepositoryRoute implements HttpHandler {
     private final @NotNull GithubService githubService;
@@ -38,8 +37,7 @@ public final class RepositoryRoute implements HttpHandler {
             return;
         }
 
-        // repos/username/name/
-
+        // repos/username/name
         @NotNull String[] parts = exchange.getRequestURI().getPath().substring(1).split("/");
         @NotNull String username = parts[1];
 
@@ -62,8 +60,6 @@ public final class RepositoryRoute implements HttpHandler {
             }
             name = parts[2];
         }
-        System.out.println("Path: " + exchange.getRequestURI().getPath());
-        System.out.println("Name: " + name);
 
         if (name != null) {
             @NotNull String body = githubService.getRepository(username, name);

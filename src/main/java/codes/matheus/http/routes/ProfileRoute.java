@@ -49,9 +49,12 @@ public final class ProfileRoute implements HttpHandler {
             return;
         }
 
-        //users/username/repository_name
+        // users/username/repos
+        // users/username/events
         @NotNull String body = (parts.length > 1 && parts[1].equals("repos"))
                 ? githubService.getRepository(username)
+                : (parts.length > 1 && parts[1].equals("events"))
+                ? githubService.getEvents(username)
                 : githubService.getProfile(username);
 
         Response.builder(exchange)
