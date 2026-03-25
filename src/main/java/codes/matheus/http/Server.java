@@ -4,6 +4,7 @@ import codes.matheus.cache.Cache;
 import codes.matheus.config.AppConfig;
 import codes.matheus.http.routes.HtmlRoute;
 import codes.matheus.http.routes.ProfileRoute;
+import codes.matheus.http.routes.RepositoryRoute;
 import com.jlogm.Logger;
 import com.sun.net.httpserver.HttpServer;
 import org.jetbrains.annotations.NotNull;
@@ -35,6 +36,8 @@ public final class Server {
         log.info("Registered endpoint " + "\"/\"" + " (GET)");
         server.createContext("/users/", new ProfileRoute(config, cache));
         log.info("Registered endpoint " + "\"/users/\"" + " (GET)");
+        server.createContext("/repos/", new RepositoryRoute(config, cache));
+        log.info("Registered endpoint " + "\"/repos/\"" + " (GET)");
 
         server.setExecutor(Executors.newCachedThreadPool());
         server.start();
