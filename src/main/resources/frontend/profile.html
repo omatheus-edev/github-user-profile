@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitSearch — Perfil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="profile-page">
+
+  <!-- Header -->
+  <header class="navbar">
+    <a href="/" class="brand">
+      <span class="brand-git">git</span><span class="brand-search">search</span>
+    </a>
+    <a href="/" class="back-btn">← Voltar</a>
+  </header>
+
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="loader-spinner"></div>
+    <p>Carregando perfil...</p>
+  </div>
+
+  <!-- Conteúdo principal -->
+  <main id="content" class="profile-content hidden">
+    <div class="profile-grid">
+
+      <!-- Hero: avatar + info -->
+      <section class="card hero-card">
+        <img id="avatar" src="" alt="" class="avatar">
+        <div class="hero-info">
+          <h1 id="name" class="hero-name"></h1>
+          <p id="login" class="hero-login"></p>
+          <p id="bio" class="hero-bio"></p>
+          <div class="hero-meta">
+            <span id="location" class="meta-item hidden">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a5.53 5.53 0 0 0-5.5 5.5c0 4.6 5.5 10.5 5.5 10.5s5.5-5.9 5.5-10.5A5.53 5.53 0 0 0 8 0zm0 8a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              <span id="location-text"></span>
+            </span>
+            <span id="company" class="meta-item hidden">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M1 2.5A2.5 2.5 0 0 1 3.5 0h9A2.5 2.5 0 0 1 15 2.5v11a.5.5 0 0 1-.5.5H1.5a.5.5 0 0 1-.5-.5v-11z"/></svg>
+              <span id="company-text"></span>
+            </span>
+            <a id="blog" class="meta-item hidden" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4.715 6.542L3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/></svg>
+              <span id="blog-text"></span>
+            </a>
+          </div>
+          <div class="hero-pills">
+            <div class="pill"><span id="followers" class="pill-num"></span><span class="pill-lbl">seguidores</span></div>
+            <div class="pill"><span id="following" class="pill-num"></span><span class="pill-lbl">seguindo</span></div>
+            <div class="pill"><span id="public-repos" class="pill-num"></span><span class="pill-lbl">repositórios</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <span id="s-repos" class="stat-val">—</span>
+          <span class="stat-lbl">Repositórios</span>
+        </div>
+        <div class="stat-card">
+          <span id="s-stars" class="stat-val">—</span>
+          <span class="stat-lbl">Stars recebidas</span>
+        </div>
+        <div class="stat-card">
+          <span id="s-forks" class="stat-val">—</span>
+          <span class="stat-lbl">Forks</span>
+        </div>
+        <div class="stat-card">
+          <span id="s-langs" class="stat-val">—</span>
+          <span class="stat-lbl">Linguagens</span>
+        </div>
+      </section>
+
+      <!-- Linguagens -->
+      <section class="card">
+        <h2 class="card-title">Linguagens</h2>
+        <div id="lang-bar" class="lang-bar"></div>
+        <div id="lang-legend" class="lang-legend"></div>
+      </section>
+
+      <!-- Projetos em destaque -->
+      <section class="card">
+        <h2 class="card-title">Projetos em destaque</h2>
+        <div id="projects-grid" class="projects-grid"></div>
+      </section>
+
+      <!-- Atividade recente -->
+      <section class="card">
+        <h2 class="card-title">Atividade recente</h2>
+        <div id="activity-list" class="activity-list"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/profile.js"></script>
+</body>
+</html>

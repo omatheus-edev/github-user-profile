@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitSearch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="search-page">
+
+  <div class="search-container">
+
+    <div class="brand">
+      <span class="brand-git">git</span><span class="brand-search">search</span>
+    </div>
+
+    <p class="brand-sub">Explore perfis e projetos do GitHub</p>
+
+    <div class="search-box">
+      <input
+        type="text"
+        id="search-input"
+        class="search-input"
+        placeholder="Digite um usuário... ex: torvalds"
+        autocomplete="off"
+        spellcheck="false"
+      >
+      <button id="search-btn" class="search-btn">Buscar</button>
+    </div>
+
+    <p class="search-hint">Pressione <kbd>Enter</kbd> ou clique em Buscar</p>
+
+    <p id="search-error" class="search-error hidden">Usuário não encontrado. Verifique o nome e tente novamente.</p>
+
+    <div class="search-divider">ou</div>
+    <a href="/repos.html" class="repo-search-link">Buscar um repositório específico →</a>
+
+  </div>
+
+  <div class="bg-grid"></div>
+
+  <script src="js/search.js"></script>
+</body>
+</html>

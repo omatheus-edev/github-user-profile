@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitSearch — Repositórios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="profile-page">
+
+  <header class="navbar">
+    <a href="/" class="brand">
+      <span class="brand-git">git</span><span class="brand-search">search</span>
+    </a>
+    <a href="/" class="back-btn">← Voltar</a>
+  </header>
+
+  <main class="profile-content">
+    <div class="profile-grid">
+
+      <!-- Formulário de busca -->
+      <section class="card">
+        <h2 class="card-title">Buscar repositório</h2>
+        <div class="repo-search-box">
+          <div class="repo-search-fields">
+            <div class="field-wrap">
+              <label class="field-label" for="repo-user">Usuário</label>
+              <input
+                type="text"
+                id="repo-user"
+                class="search-input"
+                placeholder="ex: torvalds"
+                autocomplete="off"
+                spellcheck="false"
+              >
+            </div>
+            <span class="field-sep">/</span>
+            <div class="field-wrap">
+              <label class="field-label" for="repo-name">Repositório</label>
+              <input
+                type="text"
+                id="repo-name"
+                class="search-input"
+                placeholder="ex: linux"
+                autocomplete="off"
+                spellcheck="false"
+              >
+            </div>
+          </div>
+          <button id="repo-btn" class="search-btn">Buscar</button>
+        </div>
+        <p id="repo-error" class="search-error hidden"></p>
+      </section>
+
+      <!-- Resultado -->
+      <div id="repo-result" class="hidden">
+
+        <section class="card repo-result-card">
+          <div class="repo-result-header">
+            <div>
+              <a id="r-link" href="#" target="_blank" rel="noopener" class="repo-result-name"></a>
+              <p id="r-desc" class="repo-result-desc"></p>
+            </div>
+            <a id="r-gh-link" href="#" target="_blank" rel="noopener" class="btn-github">
+              Ver no GitHub →
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="repo-stats">
+            <div class="repo-stat-item">
+              <span class="repo-stat-val" id="r-stars">—</span>
+              <span class="repo-stat-lbl">Stars</span>
+            </div>
+            <div class="repo-stat-item">
+              <span class="repo-stat-val" id="r-forks">—</span>
+              <span class="repo-stat-lbl">Forks</span>
+            </div>
+            <div class="repo-stat-item">
+              <span class="repo-stat-val" id="r-watchers">—</span>
+              <span class="repo-stat-lbl">Watchers</span>
+            </div>
+            <div class="repo-stat-item">
+              <span class="repo-stat-val" id="r-issues">—</span>
+              <span class="repo-stat-lbl">Issues abertas</span>
+            </div>
+          </div>
+
+          <!-- Detalhes -->
+          <div class="repo-details">
+            <div class="repo-detail-row">
+              <span class="repo-detail-label">Linguagem</span>
+              <span id="r-lang" class="repo-detail-val"></span>
+            </div>
+            <div class="repo-detail-row">
+              <span class="repo-detail-label">Criado em</span>
+              <span id="r-created" class="repo-detail-val"></span>
+            </div>
+            <div class="repo-detail-row">
+              <span class="repo-detail-label">Último update</span>
+              <span id="r-updated" class="repo-detail-val"></span>
+            </div>
+            <div id="r-license-row" class="repo-detail-row hidden">
+              <span class="repo-detail-label">Licença</span>
+              <span id="r-license" class="repo-detail-val"></span>
+            </div>
+          </div>
+
+          <!-- Tópicos -->
+          <div id="r-topics-wrap" class="repo-topics-wrap hidden">
+            <span class="repo-detail-label">Tópicos</span>
+            <div id="r-topics" class="repo-topics-list"></div>
+          </div>
+
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/repos.js"></script>
+</body>
+</html>
