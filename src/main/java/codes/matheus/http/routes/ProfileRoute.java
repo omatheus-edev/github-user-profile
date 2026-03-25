@@ -8,7 +8,6 @@ import codes.matheus.service.GithubService;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
@@ -38,7 +37,9 @@ public final class ProfileRoute implements HttpHandler {
             return;
         }
 
-        @Nullable String username = exchange.getRequestURI().getPath().substring("/users/".length());
+        @NotNull String path = exchange.getRequestURI().getPath().substring("/users/".length());
+        @NotNull String[] parts = path.split("/");
+        @NotNull String username = parts[0];
 
         if (username.isBlank()) {
             Response.builder(exchange)
@@ -48,7 +49,11 @@ public final class ProfileRoute implements HttpHandler {
             return;
         }
 
-        @NotNull String body = githubService.getProfile(username);
+        //users/username/repository_name
+        @NotNull String body = (parts.length > 1 && parts[1].equals("repos"))
+                ? githubService.getRepository(username)
+                : githubService.getProfile(username);
+
         Response.builder(exchange)
                 .status(HttpStatus.OK)
                 .body(body)
